@@ -14,7 +14,7 @@
  * @return void
  */
 function flatsome_viewport_meta() {
-	echo apply_filters( 'flatsome_viewport_meta', '<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	echo apply_filters( 'flatsome_viewport_meta', '<meta name="viewport" content="width=device-width, initial-scale=1" />' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 }
 
 add_action( 'wp_head', 'flatsome_viewport_meta', 1 );
@@ -91,6 +91,8 @@ function flatsome_header_elements( $options, $type = '' ) {
 				flatsome_header_nav( 'top_bar_nav', $walker );
 			} elseif ( $value == 'nav' ) {
 				flatsome_header_nav( 'primary', $walker );
+			} elseif ( $value == 'nav-secondary' ) {
+				flatsome_header_nav( 'secondary', $walker );
 			} elseif ( $value == 'nav-vertical' && $type === 'sidebar' ) {
 				flatsome_header_nav( 'vertical', $walker );
 			} elseif ( $value == 'wpml' ) {
@@ -1161,7 +1163,7 @@ function flatsome_logo_position() {
 	$classes[] = 'logo-' . get_theme_mod( 'logo_position', 'left' );
 
 	// Mobile logo position.
-	if (get_theme_mod( 'logo_position_mobile', 'center' ) == 'center') $classes[] = 'medium-logo-center';
+	$classes[] = 'medium-logo-' . get_theme_mod( 'logo_position_mobile', 'center' );
 
 	echo implode( ' ', $classes ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 }

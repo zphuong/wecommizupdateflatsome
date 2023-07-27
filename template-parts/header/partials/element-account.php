@@ -10,12 +10,11 @@ $icon_style = get_theme_mod('account_icon_style');
 ?>
 <?php if(is_woocommerce_activated()){ ?>
 <li class="account-item has-icon
-  <?php if(is_account_page()) echo ' active'; ?> 
+  <?php if(is_account_page()) echo ' active'; ?>
   <?php if ( is_user_logged_in() ) { ?> has-dropdown<?php } ?>"
 >
-<i class="fad fa-user"></i>
 <?php if($icon_style && $icon_style !== 'image' && $icon_style !== 'plain') echo '<div class="header-button">'; ?>
-<span>Xin chào</span>
+
 <?php if ( is_user_logged_in() ) { ?>
 <a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" class="account-link account-login
   <?php if($icon_style && $icon_style !== 'image') echo get_flatsome_icon_class($icon_style, 'small'); ?>"
@@ -49,9 +48,9 @@ $icon_style = get_theme_mod('account_icon_style');
   >
   <?php if(get_theme_mod('header_account_title', 1)) { ?>
   <span>
-    <?php _e('Đăng nhập', 'woocommerce'); ?>
+    <?php _e('Login', 'woocommerce'); ?>
     <?php if(get_theme_mod('header_account_register')){
-        echo ' / '.__('Đăng ký', 'woocommerce');
+        echo ' / '.__('Register', 'woocommerce');
       } ?>
   </span>
   <?php } else {
